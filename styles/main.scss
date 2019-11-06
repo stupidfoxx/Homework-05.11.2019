@@ -1,0 +1,261 @@
+@font-face {
+	font-family: 'Diablo';
+	src: url('./../fonts/Diablo.eot');
+	src: local('DiabloRegular'), local('Diablo'),
+		url('./../fonts/Diablo.eot?#iefix') format('embedded-opentype'),
+		url('./../fonts/Diablo.woff') format('woff'),
+		url('./../fonts/Diablo.ttf') format('truetype');
+	font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Diablo';
+    font-size: 24px;
+    background: url('./../images/hell.jpg') #000 no-repeat center;
+    background-position: center 800px;
+    color: #fff;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 100px 600px 100px minmax(400px, 1fr) 200px;
+    grid-template-areas: 
+        "head head head head head head"
+        "side side con con con con"
+        "navi navi navi navi navi navi"
+        "art art art art art art"
+        "foot foot foot foot foot foot";
+    grid-gap: 20px;
+    width: 1280px;
+    min-height: 100vh;
+    margin: 0 auto;
+    background-color: transparent;
+}
+
+.header {
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 0px 10px 2px rgba(255,52,2,1);
+    grid-area: head;
+    border: 1px solid rgb(156,47,0);
+    & ul {
+        list-style: none;
+    }
+    & li {
+        display: inline;
+        margin-left: 50px;
+    }
+    & a {
+        text-decoration: none;
+        color: #fff;
+    }
+    & img {
+        width: 250px;
+        height: auto;
+    }
+}
+
+.sidebar{
+    background-color: rgba(0, 0, 0, 0.8);
+    grid-area: side;
+    border: 1px solid rgb(156,47,0);
+    box-shadow: 0px 0px 10px 2px rgba(156,47,0,1);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 200px;
+    overflow-y: scroll;
+    padding: 5px 0;
+    & div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+            & img {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                box-shadow: 0px 0px 10px 4px rgba(156,47,0,1);
+            }
+            & p {
+                text-align: center;
+                margin: 0;
+            }
+            &:nth-child(2n) {
+                margin-top: 200px;
+            }     
+    }
+}
+
+.content {
+    padding: 10px 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    grid-area: con;
+    border: 1px solid rgb(156,47,0);
+    box-shadow: 0px 0px 10px 2px rgba(156,47,0,1);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 100px 100px minmax(300px, 1fr);
+    grid-gap: 5px;
+    & div {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        grid-column: 1/3;
+        &:nth-child(2) {
+            grid-column: 2/4;
+            grid-row: 2;
+        }
+        &:nth-child(1) {
+            flex-direction: row-reverse;
+        } 
+    }
+    & img {
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        box-shadow: 0px 0px 10px 4px rgba(156,47,0,1);
+    }
+    & p {
+        text-align: center;
+        margin: 0;
+        font-size: 18px;
+    }
+    & div.mountain {
+        background: url('./../images/mountain.png') center;
+        opacity: 0.5;
+        width: 100%;
+        grid-column: 1/4;
+        grid-row: 3;
+    }   
+}
+
+.navigation {
+    background-color: rgba(0, 0, 0, 0.8);
+    grid-area: navi;
+    border: 1px solid rgb(156,47,0);
+    box-shadow: 0px 0px 10px 2px rgba(156,47,0,1);
+    overflow: hidden;
+    & h1 {
+        text-align: center;
+        text-transform: uppercase;
+        animation: hell 6s infinite linear;
+        padding-left: 100%;
+        white-space: nowrap;
+        @keyframes hell {
+            0%{
+              transform: translate(0, 0);
+            }
+            
+            100%{
+              transform: translate(-160%, 0);
+            }
+          }
+    }
+}
+
+.article {
+    background-color: rgba(0, 0, 0, 0.6);
+    grid-area: art;
+    border: 1px solid rgb(156,47,0);
+    box-shadow: 0px 0px 10px 2px rgba(156,47,0,1);
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    & div {
+        margin: 15px;
+        width: 600px;
+    }
+    & h2 {
+        text-align: center;
+    }
+
+    & p{
+        margin: 0;
+    }
+}
+.footer {
+    grid-area: foot;
+    background: url('./../images/fire.gif') no-repeat center;
+    background-size: 100% 300px;
+
+}
+
+@media screen and (max-width: 768px) {
+    .wrapper {
+        display: grid;
+        width: 750px;
+        box-sizing: border-box;
+        min-height: 100vh;
+        padding: 0;
+        margin: 0 auto;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 150px 600px 100px minmax(400px, 1fr) 200px;
+        align-content: center;
+        grid-gap: 5px;
+        grid-template-areas:
+        "head head head head"
+        "side side con con"
+        "navi navi navi navi"
+        "art art art art"
+        "foot foot foot foot";
+    }
+
+    .header {
+        padding: 0;
+        margin: 0;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        & ul {
+            padding: 0;
+        }
+        & li {
+            margin: 10px;
+        }
+    }
+
+    .sidebar {
+        & div {
+            margin-top: 150px;
+        }
+        & div:nth-child(2n) {
+            margin-top: 0;
+        }     
+  }
+
+  .content {
+    & div {
+        margin: 10px;
+        grid-column: 1/4;
+        &:nth-child(2) {
+            grid-column: 1/4;
+            grid-row: 2;
+        }
+        &:nth-child(1) {
+            flex-direction: row-reverse;
+        } 
+    }
+    & img {
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        box-shadow: 0px 0px 10px 4px rgba(156,47,0,1);
+    }
+    & p {
+        text-align: center;
+        margin: 0;
+        font-size: 14px;
+    }
+  }
+}
